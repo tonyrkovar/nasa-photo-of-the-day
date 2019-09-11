@@ -24,6 +24,7 @@ export default function PhotoDisplay() {
             <div className='description-container'>
                {photoHolder.map(e => {
                    return <PhotoPull 
+                   title={e.title}
                     key={e.date}
                     description={e.explanation}
                     url={e.url}
