@@ -1,3 +1,8 @@
+*{
+  background-color: rgb(20, 20, 20);
+  justify-content: center;
+}
+
 .App {
   text-align: center;
 }
@@ -30,4 +35,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.description-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nasa-img{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 20px;
+}
+
+.nasa-img img{
+  height: 80vh;
+  width: 80vh;
+}
+
+.nasa-img p{
+  width: 600px;
+  background: gray;
+  padding: 10px 80px 40px 80px;
 }
