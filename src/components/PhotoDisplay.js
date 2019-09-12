@@ -8,29 +8,28 @@ export default function PhotoDisplay() {
 
     useEffect(() => {
         axios
-            .get(`https://api.nasa.gov/planetary/apod?api_key=5X7CnHM2wQQVdMqeUkhuTf1UBRnj5oJzV7qRORxH&count=6`)
+            .get(`https://api.nasa.gov/planetary/apod?api_key=5X7CnHM2wQQVdMqeUkhuTf1UBRnj5oJzV7qRORxH`)
             .then(response => {
                 const data = response.data;
                 console.log(data)
                 setPhotoHolder(data);
             })
             .catch(error => {
-                console.log('Borked', error);
+                console.log('Can not load', error);
             });
     }, []);
 
     return (
         <div className='photo-container'>
             <div className='description-container'>
-               {photoHolder.map(e => {
                    return <PhotoPull 
-                   title={e.title}
-                    key={e.date}
-                    description={e.explanation}
-                    url={e.url}
-                    date={e.date}
+                   title={photoHolder.title}
+                    key={photoHolder.date}
+                    description={photoHolder.explanation}
+                    url={photoHolder.url}
+                    date={photoHolder.date}
                     />;
-               })} 
+               )} 
             </div>
         </div>
     )
