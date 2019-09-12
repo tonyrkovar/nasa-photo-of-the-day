@@ -1,6 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import PhotoPull from './PhotoPull';
+import styled from 'styled-components'
+
+const Container = styled.div`
+display: flex;
+flex-wrap: wrap;
+`;
 
 
 export default function PhotoDisplay() {
@@ -8,7 +14,7 @@ export default function PhotoDisplay() {
 
     useEffect(() => {
         axios
-            .get(`https://api.nasa.gov/planetary/apod?api_key=5X7CnHM2wQQVdMqeUkhuTf1UBRnj5oJzV7qRORxH`)
+            .get(`https://api.nasa.gov/planetary/apod?api_key=5X7CnHM2wQQVdMqeUkhuTf1UBRnj5oJzV7qRORxH&count=10`)
             .then(response => {
                 const data = response.data;
                 console.log(data)
@@ -21,16 +27,17 @@ export default function PhotoDisplay() {
 
     return (
         <div className='photo-container'>
-            <div className='description-container'>
+             <Container>
+                {photoHolder.map(e =>{ 
                    return <PhotoPull 
-                   title={photoHolder.title}
-                    key={photoHolder.date}
-                    description={photoHolder.explanation}
-                    url={photoHolder.url}
-                    date={photoHolder.date}
-                    />;
-               )} 
-            </div>
+                   title={e.title}
+                    key={e.date}
+                    description={e.explanation}
+                    url={e.url}
+                    date={e.date}
+                    />
+               })} 
+            </Container>
         </div>
     )
 }
