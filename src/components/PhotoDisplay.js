@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import PhotoPull from './PhotoPull';
 import styled from 'styled-components'
+import CarouselDisplay from './carousel';
 
 const Container = styled.div`
 display: flex;
@@ -24,11 +25,10 @@ export default function PhotoDisplay() {
                 console.log('Can not load', error);
             });
     }, []);
-
-    return (
+    return ( 
         <div className='photo-container'>
              <Container>
-                {photoHolder.map(e =>{ 
+                {photoHolder.map(e =>{
                    return <PhotoPull 
                    title={e.title}
                     key={e.date}
@@ -36,6 +36,7 @@ export default function PhotoDisplay() {
                     url={e.url}
                     date={e.date}
                     />
+                    
                })} 
             </Container>
         </div>
